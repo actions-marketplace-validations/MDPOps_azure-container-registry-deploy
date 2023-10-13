@@ -1,0 +1,22 @@
+name: 'Azure Container Registry Build by MDPOps'
+branding:
+  icon: 'tool'
+  color: 'red'
+author: 'Clark159'
+description: 'GitHub Action for building Azure Container Registry'
+
+inputs:
+  creds:
+    required: true
+    
+runs:
+  using: 'composite'
+  steps:
+  
+  - name: 'Login Azure CLI'
+    uses: azure/login@v1
+    with:
+      creds: ${{ inputs.creds }}
+      
+  - name: 'Checkout GitHub Repository'
+    uses: actions/checkout@v4
